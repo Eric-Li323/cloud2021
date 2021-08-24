@@ -89,22 +89,6 @@
     </dependencies>
   </dependencyManagement>
 
-<!--    如果出现 Cannot resolve plugin org.apache.maven.plugins:maven-clean-plugin:3.1.0 添加一下代码-->
-<!--  镜像开始-->
-<!--  <repositories>
-    <repository>
-      <id>alimaven</id>
-      <url>https://maven.aliyun.com/repository/public</url>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>alimaven</id>
-      <url>https://maven.aliyun.com/repository/public</url>
-    </pluginRepository>
-  </pluginRepositories>-->
-<!--  镜像结束-->
-
   <build>
     <plugins>
       <plugin>
