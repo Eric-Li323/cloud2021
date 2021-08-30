@@ -91,6 +91,7 @@
 
   <build>
     <plugins>
+      <!--配置自动热部署devtools-->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
