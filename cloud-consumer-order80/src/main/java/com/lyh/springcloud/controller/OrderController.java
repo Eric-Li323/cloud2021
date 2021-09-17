@@ -46,7 +46,6 @@ public class OrderController {
     @GetMapping("/consumer/payment/getForEntity/{id}")
     public CommonResult<Payment> getPayment2(@PathVariable("id") Long id){
         ResponseEntity<CommonResult> entity = restTemplate.getForEntity(PAYMENT_URL + "/payment/get/"+id,CommonResult.class);
-
         if(entity.getStatusCode().is2xxSuccessful()){
             return entity.getBody();
         }else {
@@ -65,6 +64,4 @@ public class OrderController {
         URI uri = serviceInstance.getUri();
         return restTemplate.getForObject(uri+"/payment/lb",String.class);
     }
-
-
 }
