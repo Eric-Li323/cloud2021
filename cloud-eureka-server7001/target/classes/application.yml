@@ -9,9 +9,9 @@ eureka:
     service-url:                #设置与Eureka Server交互的地址查询服务和注册服务都需要这个地址
 #     defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
      #集群指向其他eureka
-     defaultZone: http://eureka7002.com:7002/eureka/
+     #defaultZone: http://eureka7002.com:7002/eureka/
      #单机就是自己
-     #defaultZone: http://eureka7001.com:7001/eureka/
+     defaultZone: http://eureka7001.com:7001/eureka/
   server:
     enable-self-preservation: false   #eureka自我保护机制，默认为true
     eviction-interval-timer-in-ms: 2000   #eureka超时清除服务的时间，毫秒为单位，默认为90秒
