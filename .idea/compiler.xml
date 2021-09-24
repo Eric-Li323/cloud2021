@@ -20,6 +20,7 @@
         <module name="cloud-api-commons" />
         <module name="cloud-consumezk-order80" />
         <module name="cloud-providerconsul-payment8006" />
+        <module name="cloud-consumer-hystrix-dashboard9001" />
         <module name="cloud-consumer-feign-order80" />
       </profile>
     </annotationProcessing>
@@ -27,6 +28,7 @@
       <module name="cloud-api-commons" target="1.8" />
       <module name="cloud-consumer-feign-hystrix-order80" target="1.8" />
       <module name="cloud-consumer-feign-order80" target="1.8" />
+      <module name="cloud-consumer-hystrix-dashboard9001" target="1.8" />
       <module name="cloud-consumer-order80" target="1.8" />
       <module name="cloud-consumerconsul-order80" target="1.8" />
       <module name="cloud-consumezk-order80" target="1.8" />
