@@ -7,7 +7,6 @@ spring:
   #consul注册中心地址
   cloud:
     consul:
-      # consul注册中心地址
       host: 192.168.115.66
       port: 8500
       discovery:
