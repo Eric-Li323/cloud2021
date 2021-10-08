@@ -11,7 +11,13 @@
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/com/lyh/springcloud/config/ApplicationContextConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/lyh/myrule/MySelfRule.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/lyh/springcloud/OrderMain80.java</file>
+        </fileset>
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">

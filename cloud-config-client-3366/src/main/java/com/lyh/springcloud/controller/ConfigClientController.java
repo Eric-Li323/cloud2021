@@ -7,18 +7,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author lyh
- * @date 2021/9/29
+ * @date 2021/9/30
  */
 @RestController
 @RefreshScope
 public class ConfigClientController {
 
-    @Value("${config.info}")
+    @Value("${server.port}")
+    private String serverPort;
+
+    @Value("${server.info}")
     private String configInfo;
 
     @GetMapping("/configInfo")
     public String getConfigInfo() {
-        System.out.println("*************************   3355");
-        return configInfo;
+        return "serverPort: "+serverPort + "\t\n\n configInfo: "+ configInfo;
     }
 }
