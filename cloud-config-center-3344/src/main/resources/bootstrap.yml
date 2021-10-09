@@ -30,8 +30,10 @@ eureka:
       defaultZone: http://localhost:7001/eureka
 
 #rabbitmq相关配置，暴露bus刷新配置的端点
+#运维：刷新配置信息，在命令窗口发送命令到config服务中心： curl -X POST "http://localhost:3344/actuator/bus-refresh"
 management:
   endpoints:
     web:
       exposure:
         include: 'bus-refresh'
+

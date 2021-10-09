@@ -16,7 +16,7 @@ public class ConfigClientController {
     @Value("${server.port}")
     private String serverPort;
 
-    @Value("${server.info}")
+    @Value("${config.info}")
     private String configInfo;
 
     @GetMapping("/configInfo")

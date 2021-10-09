@@ -12,6 +12,12 @@
     <artifactId>cloud-config-client-3355</artifactId>
 
     <dependencies>
+        <!-- bootstrap额外依赖 解决springcloud 配置文件bootstrap.yml没有被读取问题（此问题出现是springcloud自身的问题）-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+            <version>3.0.1</version>
+        </dependency>
         <!--添加消息总线RabbitMQ支持-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
