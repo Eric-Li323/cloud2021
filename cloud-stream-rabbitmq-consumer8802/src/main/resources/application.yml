@@ -20,6 +20,7 @@ spring:
           destination: studyExchange #表示要使用的exchange名称定义
           content-type: application/json #设置消息类型，本次为对象json,文本则设置"text/plain"
           binder: defaultRabbit  #设置要绑定的消息服务的具体设置
+          #group: lyh
 eureka:
   client:
     service-url:
@@ -27,5 +28,25 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 5 #如果现在超过了5秒的间隔
     lease-renewal-interval-in-seconds: 2 #设置心跳的时间间隔
-    instance-id: send-8802.com
+    instance-id: receive-8802.com
     prefer-ip-address: true #访问的路径变为IP地址
+
+#spring:
+#  application:
+#    name: cloud-stream-consumer
+#  rabbitmq:
+#    host: 192.168.184.88
+#    port: 5672
+#    username: guest
+#    password: guest
+#  cloud:
+#    stream:
+#      binders:
+#        defaultRabbit:
+#          type: rabbit
+#      bindings:
+#        output:
+#          destination: cruiiExchange
+#          content-type: application/json
+#          binder: defaultRabbit
+#          group: lyh
