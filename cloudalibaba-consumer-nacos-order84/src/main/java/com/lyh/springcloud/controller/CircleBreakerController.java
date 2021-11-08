@@ -1,6 +1,7 @@
 package com.lyh.springcloud.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.lyh.springcloud.entities.CommonResult;
 import com.lyh.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +26,12 @@ public class CircleBreakerController {
     private RestTemplate restTemplate;
 
     @RequestMapping("/consumer/fallback/{id}")
-    @SentinelResource(value = "fallback") //没有配置
+    //@SentinelResource(value = "fallback") //没有配置
+    //@SentinelResource(value = "fallback",fallback = "handlerFallback")  //fallback只负责业务异常  (Java运行时异常)
+    //@SentinelResource(value = "fallback",blockHandler = "blockHandler")  //blockhandler只负责sentinel控制台配置违规
+    //@SentinelResource(value = "fallback",fallback = "handlerFallback",blockHandler = "blockHandler")
+    @SentinelResource(value = "fallback",fallback = "handlerFallback",blockHandler = "blockHandler",
+            exceptionsToIgnore = {IllegalArgumentException.class})   //不再接管某个或某些异常类型，让其自然报错即出现error page页面
     public CommonResult<Payment> fallback(@PathVariable Long id){
         CommonResult<Payment> result = restTemplate.getForObject(SERVICE_URL + "/paymentSQL/"+id,CommonResult.class,id);
 
@@ -35,5 +41,17 @@ public class CircleBreakerController {
             throw  new NullPointerException("NullPointerException,该ID没有对应记录，空指针异常");
         }
         return result;
+    }
+
+    //本例是fallback
+    public CommonResult handlerFallback(@PathVariable("id") Long id, Throwable e) {
+        Payment payment = new Payment(id,"null");
+        return new CommonResult(444,"兜底异常handlerFallback,exception内容"+e.getMessage(),payment);
+    }
+
+    //本例是blockhandler
+    public CommonResult blockHandler(@PathVariable Long id, BlockException blockException){
+        Payment payment = new Payment(id,"null");
+        return new CommonResult(445,"blockHandler-sentinel限流，无此流水：blockException "+blockException.getMessage(),payment);
     }
 }

@@ -23,8 +23,8 @@ public class PaymentController {
 
     static {
         hashMap.put(1L,new Payment(1L,"fghkgjhjgjhkgkhjghgghgdtru"));
-        hashMap.put(1L,new Payment(2L,"iuyophughjkhjgydtyiytyyghg"));
-        hashMap.put(1L,new Payment(3L,"youigkbhftuftycfgfgyiguhgh"));
+        hashMap.put(2L,new Payment(2L,"iuyophughjkhjgydtyiytyyghg"));
+        hashMap.put(3L,new Payment(3L,"youigkbhftuftycfgfgyiguhgh"));
     }
 
     @GetMapping(value = "/paymentSQL/{id}")
