@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 
 import javax.sql.DataSource;
 //使用seata对数据源进行代理
@@ -26,16 +27,17 @@ public class DataSourceProxyConfig {
     }
 
     @Bean
-    public DataSourceProxy dataSourceProxy(DataSource dataSource) {
-        return new DataSourceProxy(dataSource);
+    public DataSourceProxy dataSourceProxy(DataSource druidDataSource) {
+        return new DataSourceProxy(druidDataSource);
     }
 
     @Bean
     public SqlSessionFactory sqlSessionFactoryBean(DataSourceProxy dataSourceProxy) throws Exception {
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(dataSourceProxy);
-        sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(mapperLocations));
-        sqlSessionFactoryBean.setTransactionFactory(new SpringManagedTransactionFactory());
-        return sqlSessionFactoryBean.getObject();
+        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+        bean.setDataSource(dataSourceProxy);
+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        bean.setMapperLocations(resolver.getResources(mapperLocations));
+        return bean.getObject();
     }
 }
+

@@ -17,7 +17,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     # mysql驱动类
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.184.88:3306/seata_order?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://192.168.184.88:3306/bootvue?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: 123456
 feign:
