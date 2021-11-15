@@ -26,6 +26,8 @@ public class AccountServiceImpl implements AccountService{
     public void decrease(Long userId, BigDecimal money) {
         LOGGER.info("----> account-service中扣减用户余额开始");
 
+        //模拟超时异常，全局回滚
+        //暂停几秒钟线程
         try {
             TimeUnit.SECONDS.sleep(20);
         } catch (InterruptedException e) {
